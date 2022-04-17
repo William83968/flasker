@@ -1,5 +1,7 @@
 from ssl import OP_SINGLE_DH_USE
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
 
 # Create a flask instance
 app = Flask(__name__)

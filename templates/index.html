@@ -1,18 +1,23 @@
-<h1>Hello World!</h1>
+{% extends 'base.html'%}
 
-<p>This is my first webpage!!!</p>
+{% block content %}
+    <h1>Hello World!</h1>
 
-<p>My name is {{ first_name }}</p>
+    <p>This is my first webpage!!!</p>
 
-<p>{{stuff|title }}</p>
+    <p>My name is {{ first_name }}</p>
 
-<h3>Cold beverages</h3>
-{% for drink in cool_list|reverse %}
-    {% if drink == "milk shake"%}
-        <li>Sorry we run out of these..</li>
-    {% elif drink == "ice block"%}
-        <li>NO!NOT {{ drink|upper }}!</li>
-    {% else %}
-        <li>{{drink}}</li>
-    {% endif %}
-{% endfor %}
+    <p>{{stuff|title }}</p>
+
+    <h3>Cold beverages</h3>
+    {% for drink in cool_list|reverse %}
+        {% if drink == "milk shake"%}
+            <li>Sorry we run out of these..</li>
+        {% elif drink == "ice block"%}
+            <li>NO!NOT {{ drink|upper }}!</li>
+        {% else %}
+            <li>{{drink}}</li>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
