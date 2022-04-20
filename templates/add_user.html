@@ -3,12 +3,10 @@
 {% block content %}
     {% for message in get_flashed_messages() %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Hey {{name}} - {{ message }}</strong>
+            <strong>Hello {{name}} - {{ message }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-
-    
 
     {% if name %}
         <h1>{{ name }} added</h1>
@@ -22,16 +20,27 @@
                 {{ form.name(class="form-control") }}
                 {{ form.email.label(class="form-label") }}
                 {{ form.email(class="form-control") }}
+                {{ form.favourite_color.label(class="form-label") }}
+                {{ form.favourite_color(class="form-control") }}
+                {{ form.password_hash.label(class="form-label") }}
+                {{ form.password_hash(class="form-control") }}
+                {{ form.password_hash2.label(class="form-label") }}
+                {{ form.password_hash2(class="form-control") }}
                 <br/>
                 {{ form.submit(class="btn btn-success") }}
             </form> 
         </div>
     {% endif %}
     <table class="table table-hover table-bordered table-secondary">
-        <th>User List</th>
+        <th>List of User</th>
     {% for user in our_users %}
         <tr>
-            <td>{{ user.id }}-{{ user.name }}-{{ user.email }}</td>
+            <td>
+                {{ user.id }}  <a href="{{ url_for('update', id=user.id)}}">{{ user.name }}</a> -{{ user.email }}
+                -{{ user.favourite_color }}
+                <a href="{{ url_for('delete', id=user.id)}}">Delete</a>
+                PW: {{ user.password_hash }}
+            </td>
         </tr>
     {% endfor %}
     </table>
