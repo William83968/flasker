@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    
+    {% if email %}
+        <h1>Email: {{ email }}</h1>
+        <h1>Password: {{ password }}</h1>
+        <h2 class="my-2">I found this info:</h2>
+        <p>Name: {{pw_to_check.name}}</p>
+        <p>Email: {{pw_to_check.email}}</p>
+        <p>Password: {{pw_to_check.password_hash}}</p>
+        <h3>Passed: {{ passed }}</h3>
+    {% else %}
+        <h1 class="mt-5">What's Your Email and Password?</h1>
+        <br/>
+        <form method="POST">
+            {{ form.hidden_tag()}}
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control my-3") }}
+            {{ form.password_hash.label(class="form-label") }}
+            {{ form.password_hash(class="form-control my-3") }}
+            <br/>
+            {{ form.submit(class="btn btn-success") }}
+        </form>
+    {% endif %}
+            
+{% endblock %}
